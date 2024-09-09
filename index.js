@@ -8,6 +8,8 @@ const EventSource = require("eventsource");
 
 require("dotenv").config();
 
+console.log("Loading...");
+
 // Authenticate via OAuth
 const tumblr = require("tumblr.js");
 const client = tumblr.createClient({
@@ -20,7 +22,7 @@ const client = tumblr.createClient({
 
 const pipeline = promisify(stream.pipeline);
 
-const createPost = async (text: string, imageURL: string, tags: string[]) => {
+const createPost = async (text, imageURL, tags) => {
     try {
         // Fetch the image data from the URL
         const response = await axios({
@@ -77,3 +79,5 @@ pepitoSource.onmessage = (event) => {
                 break;
         }
 };
+
+console.log("Waiting for Pepito...");
