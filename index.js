@@ -1,6 +1,5 @@
 import axios from "axios";
 import * as fs from "fs";
-import * as path from "path";
 import * as stream from "stream";
 import {promisify} from "util";
 import EventSource from "eventsource";
@@ -32,7 +31,7 @@ const createPost = async (text, imageURL, tags) => {
         });
 
         // Create a temporary file path to save the image
-        const tempFilePath = path.join(__dirname, "temp_image.jpg");
+        const tempFilePath = "./temp_image.jpg";
 
         // Save the image stream to a temporary file
         await pipeline(response.data, fs.createWriteStream(tempFilePath));
