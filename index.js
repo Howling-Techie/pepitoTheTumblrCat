@@ -3,15 +3,15 @@ import * as fs from "fs";
 import * as path from "path";
 import * as stream from "stream";
 import {promisify} from "util";
+import EventSource from "eventsource";
 
-const EventSource = require("eventsource");
+import {config} from "dotenv";
+import tumblr from "tumblr.js";
 
-require("dotenv").config();
-
-console.log("Loading...");
+config();
 
 // Authenticate via OAuth
-const tumblr = require("tumblr.js");
+console.log("Loading...");
 const client = tumblr.createClient({
     consumer_key: process.env.CONSUMER_KEY,
     consumer_secret: process.env.CONSUMER_SECRET,
